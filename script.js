@@ -70,11 +70,6 @@ function filterering() {
 
 
 
-window.addEventListener("load", sidenVises);
-
-
-
-
 
 function sidenVises() {
     console.log("sidenVises");
