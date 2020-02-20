@@ -1,0 +1,302 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    margin: none;
+}
+
+#udskriv {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 5px;
+}
+
+#kategori {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 10px;
+}
+
+
+
+#kategori,
+h1 {
+    padding-top: 30px;
+    text-align: center;
+}
+
+
+img {
+    width: 100%;
+    object-fit: cover;
+
+}
+
+.valgt {
+    color: aqua;
+}
+
+body {
+    background-color: #F2F1F0;
+}
+
+nav {
+    text-align: center;
+}
+
+
+
+.hidden {
+    transform: translateX(-100%);
+    opacity: 0;
+    display: none;
+}
+
+#menuknap {
+    display: inline-block;
+    color: white;
+    margin: 0.5rem;
+}
+
+#dropdown {
+
+    top: 10vw;
+    right: 27vw;
+    display: block;
+
+}
+
+
+#logo {
+
+    height: 12vw;
+    width: 12vw;
+    background-size: cover;
+    position: absolute;
+    top: -0.5vw;
+    left: 0vw;
+}
+
+header {
+    width: 100vw;
+    background-color: black;
+    position: fixed;
+    z-index: 100;
+
+}
+
+@media only screen and (min-width:800px) {
+
+    #logo {
+
+        height: 5.5vw;
+        width: 5.5vw;
+
+        background-size: cover;
+        position: absolute;
+        top: -0.5vw;
+        left: 0vw;
+    }
+}
+
+
+
+
+
+header nav {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-end;
+
+}
+
+
+header nav a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: 'Heebo', sans-serif;
+}
+
+nav ul li ul {
+    display: none;
+    position: absolute;
+    background-color: black;
+    padding: 0.5vw;
+
+
+}
+
+nav ul li:hover ul {
+    display: block;
+
+}
+
+
+header a {
+    padding: 0.5rem;
+    display: flex;
+    color: white;
+}
+
+
+header a:hover {
+    color: orange;
+}
+
+
+
+/**** media indstillinger **/
+
+@media only screen and (min-width:800px) {
+
+    #menuknap {
+        display: none;
+    }
+
+    .hidden {
+        transform: translateX(0);
+        opacity: 1;
+        display: inline-block;
+    }
+
+    header li {
+        display: inline-block;
+        letter-spacing: 1px;
+
+    }
+
+    header nav {
+        padding: 0.1rem;
+    }
+
+
+    header nav li {
+        padding: 0.3rem;
+
+        margin: 0.8rem;
+        text-decoration: none;
+        color: black;
+
+        padding-top: 0vw;
+
+    }
+
+    header a:hover {
+        color: orange;
+    }
+
+    #dropdown {
+        display: none;
+        top: 3.5vw;
+        right: 8.5vw;
+        position: absolute;
+
+    }
+
+    header nav li:hover #dropdown {
+        display: flex;
+        flex-direction: column;
+
+
+    }
+
+
+
+
+
+}
+
+
+
+@media only screen and (min-width:1600px) {
+
+    #logo {
+
+        height: 6.5vw;
+        width: 6.5vw;
+
+        background-size: cover;
+        position: absolute;
+        top: -0.5vw;
+        left: 0vw;
+    }
+
+    header {
+        width: 100vw;
+        height: 6vw;
+        background-color: black;
+        position: fixed;
+        z-index: 100;
+
+    }
+
+    header nav a {
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-family: 'Heebo', sans-serif;
+        font-size: 2rem;
+
+    }
+
+    header nav li {
+        padding-top: 1vw;
+    }
+
+    #dropdown {
+        display: none;
+        top: 5vw;
+        right: 9vw;
+        position: absolute;
+
+    }
+}
+
+@media only screen and (min-width:2000px) {
+    header {
+        width: 100vw;
+        height: 7vw;
+        background-color: black;
+        position: fixed;
+        z-index: 100;
+
+    }
+
+    header nav a {
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-family: 'Heebo', sans-serif;
+        font-size: 2.5rem;
+
+    }
+
+    #dropdown {
+        display: none;
+        top: 4vw;
+        right: 6.5vw;
+        position: absolute;
+
+    }
+
+    #logo {
+
+        height: 7.5vw;
+        width: 7.5vw;
+
+        background-size: cover;
+        position: absolute;
+
+    }
+}

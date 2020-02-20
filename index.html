@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a id="logo" href="index.html"><img src="baggrund/logo.png" alt="logo"></a>
+            <div id="menuknap">☰</div>
+            <ul style="list-style-type:none" id="menu" class="hidden">
+                <li><a href="produkter.html">Produkter</a>
+                    <ul style="list-style-type:none" id="dropdown">
+                        <li> <a href="produkter.html">
+                                <p>Alle</p>
+                            </a></li>
+                        <li> <a href="produkter.html">
+                                <p>Jakker</p>
+                            </a></li>
+                        <li> <a href="produkter.html">
+                                <p>Kjoler</p>
+                            </a></li>
+                        <li><a href="produkter.html">Toppe</a></li>
+
+                    </ul>
+                </li>
+
+                <li><a href="om.html">Om os</a></li>
+
+            </ul>
+
+
+
+        </nav>
+        <!--<div id="logo">
+            <a href="index.html"><img src="baggrund/logo.png" alt="logo"></a>
+        </div>-->
+    </header>
+
+
+    <section id="splash"> <img src="img/splash_ss.png" alt="splashbillede">
+
+
+    </section>
+
+
+
+    <h1>Vores tøj</h1>
+    <section id="kategori">
+
+        <img src="img/small/jersey-sm.jpg" alt="jersy">
+
+        <img src="img/small/kimono-sm.jpg" alt="Læder jakke">
+
+        <img src="img/small/bluedress-sm.jpg" alt="Kjole">
+
+        <img src="img/small/priktop-sm.jpg" alt="Prikket top">
+
+        <button class="filter" data-kategori="alle">
+            <p>Alle</p>
+        </button>
+        <button class="filter" data-kategori="jakker">
+            <p>Jakker</p>
+        </button>
+        <button class="filter" data-kategori="kjoler">
+            <p>Kjoler</p>
+        </button>
+        <button class="filter" data-kategori="toppe">
+            <p>Toppe</p>
+        </button>
+
+    </section>
+
+
+    <section id="info">
+        <div id="box1"></div>
+        <div id="box2"></div>
+        <div id="box3"></div>
+    </section>
+    <footer></footer>
+
+    <script src="script.js"></script>
+
+
+</body></html>
