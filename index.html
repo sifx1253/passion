@@ -4,14 +4,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <link href="https://fonts.googleapis.com/css?family=Tomorrow&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/dtw1azo.css">
+    <title>Forside</title>
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
     <header>
         <nav>
-            <a id="logo" href="index.html"><img src="" alt="logo"></a>
+            <a id="logo" href="index.html"></a>
             <div id="menuknap">☰</div>
             <ul style="list-style-type:none" id="menu" class="hidden">
                 <li><a href="produkter.html">Produkter</a>
@@ -41,7 +44,7 @@
     </header>
 
 
-    <section id="splash"> <img src="img/splash_ss.png" alt="splashbillede">
+    <section id="splash"> <img src="logo/splash.gif" alt="splashbillede">
 
 
     </section>
@@ -50,27 +53,25 @@
 
     <h1>Vores tøj</h1>
     <section id="kategori">
+        <div class="img_1">
+            <img src="img/small/jersey-sm.jpg" alt="jersy"> <button class="filter" data-kategori="alle">
+                <p>Alle</p>
+            </button></div>
+        <div class="img2"> <img src="img/small/kimono-sm.jpg" alt="Læder jakke"> <button class="filter" data-kategori="jakker">
+                <p>Jakker</p>
+            </button></div>
+        <div class="img3"> <img src="img/small/bluedress-sm.jpg" alt="Kjole"> <button class="filter" data-kategori="kjoler">
+                <p>Kjoler</p>
+            </button> </div>
+        <div class="img4"> <img src="img/small/priktop-sm.jpg" alt="Prikket top">
+            <button class="filter" data-kategori="toppe">
+                <p>Toppe</p>
+            </button></div>
 
-        <img src="img/small/jersey-sm.jpg" alt="jersy">
 
-        <img src="img/small/kimono-sm.jpg" alt="Læder jakke">
 
-        <img src="img/small/bluedress-sm.jpg" alt="Kjole">
 
-        <img src="img/small/priktop-sm.jpg" alt="Prikket top">
 
-        <button class="filter" data-kategori="alle">
-            <p>Alle</p>
-        </button>
-        <button class="filter" data-kategori="jakker">
-            <p>Jakker</p>
-        </button>
-        <button class="filter" data-kategori="kjoler">
-            <p>Kjoler</p>
-        </button>
-        <button class="filter" data-kategori="toppe">
-            <p>Toppe</p>
-        </button>
 
     </section>
 
@@ -81,8 +82,37 @@
         <div id="box3"></div>
     </section>
     <footer></footer>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const kategori = urlParams.get("#kategori");
+        // const kategori = document.querySelector("#kategori");
+        console.log(kategori);
+        //Indsæt google sheet
+        const endpoint = "https://spreadsheets.google.com/feeds/list/1AdgP4T0S2sqYOZNl3aHq_vHGg7hOj5ulN23DWNIHV48/2/public/values?alt=json";
+        document.addEventListener("DOMContentLoaded", start);
 
-    <script src="script.js"></script>
+        function start() {
+
+            document.querySelectorAll(".filter").forEach(each => {
+                each.addEventListener("click", clickFilter);
+
+            })
+
+        }
+
+
+        //sender sitet videre til produkter.html
+        function clickFilter() {
+            console.log("click", this);
+
+            location.href = "produkter.html?kategori=" + this.dataset.kategori;
+
+
+
+        }
+    </script>
+
+    <!--    <script src="script.js"></script>-->
 
 
 </body></html>

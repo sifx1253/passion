@@ -27,12 +27,28 @@ body {
     grid-gap: 10px;
 }
 
+#passion{
+
+
+}
 
 
 #kategori,
 h1 {
     padding-top: 30px;
     text-align: center;
+}
+
+h1 {
+    font-family: 'Tomorrow', bold;
+}
+
+p {
+    font-family: input-sans, sans-serif;
+
+    font-weight: 400;
+
+    font-style: normal;
 }
 
 
@@ -50,6 +66,7 @@ img {
 
 nav {
     text-align: center;
+    padding: 60px;
 }
 
 
@@ -76,9 +93,9 @@ nav {
 
 
 #logo {
-
+    background-image: url(logo/logo.svg);
     height: 12vw;
-    width: 12vw;
+    width: 9vw;
     background-size: cover;
     position: absolute;
     top: -0.5vw;
@@ -93,16 +110,17 @@ header {
 
 }
 
+
 @media only screen and (min-width:800px) {
 
     #logo {
 
-        height: 5.5vw;
-        width: 5.5vw;
-
+        height: 6vw;
+        width: 8vw;
+        background-image: url(logo/logo.svg);
         background-size: cover;
         position: absolute;
-        top: -0.5vw;
+        top: 0vw;
         left: 0vw;
     }
 }
@@ -207,9 +225,6 @@ header a:hover {
 
 
     }
-
-
-
 
 
 }
