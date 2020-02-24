@@ -841,13 +841,7 @@ footer p {
 
 /*-------pil -------*/
 
-.beat {
-    animation-name: beat_kf;
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
 
-}
 
 .center {
     display: block;
@@ -856,5 +850,28 @@ footer p {
 }
 
 .arrow_small {
-    width: 15%;
+    width: 5%;
+}
+
+.beat {
+    animation-name: beat_kf;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(3);
+
+}
+
+@keyframes beat_kf {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(0.5vw);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
 }
