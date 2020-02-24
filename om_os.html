@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SS -</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.typekit.net/wyt4gfe.css">
+</head>
+
+<body>
+    <div id="main_container">
+        <div id="nav_bg"></div>
+        <header>
+            <nav>
+                <a href="index.html">
+                    <div id="nav1"></div>
+                </a>
+                <div id="nav2">
+                    <a href="index.html">Forside</a>
+                    <div class="dropdown_wrap">
+                        <a href="produkter.html?kategori=alle" class="show">Produkter</a>
+                        <div class="dropdown">
+                            <a href="produkter.html?kategori=alle">Alle</a>
+                            <a href="produkter.html?kategori=jakker">Jakker</a>
+                            <a href="produkter.html?kategori=kjoler">Kjoler</a>
+                            <a href="produkter.html?kategori=toppe">Toppe</a>
+                        </div>
+                    </div>
+                    <a href="om_os.html">Om os</a>
+                    <div id="burger"></div>
+                </div>
+                <div id="nav3">
+                    <a href="index.html">Forside</a>
+                    <a href="produkter.html?kategori=alle">Produkter</a>
+                    <a href="produkter.html?kategori=alle" class="under_kategori">Alle</a>
+                    <a href="produkter.html?kategori=jakker" class="under_kategori">Jakker</a>
+                    <a href="produkter.html?kategori=kjoler" class="under_kategori">Kjoler</a>
+                    <a href="produkter.html?kategori=toppe" class="under_kategori">Toppe</a>
+                    <a href="om_os.html">Om os</a>
+                </div>
+            </nav>
+        </header>
+        <div class="spacing1"></div>
+
+        <div id="omos">
+        <div class="os_billede"></div>
+        </div>
+
+    </div>
+    <script>
+        window.onresize = function(event) {
+            let windowWidth = window.innerWidth;
+            if (window.matchMedia("(min-width: 1200px)").matches) {
+                document.querySelector("#main_container").style.margin = "0 " + (windowWidth - 1200) / 2 + "px";
+            } else {
+                document.querySelector("#main_container").style.margin = "0";
+            }
+        }
+
+        function resizeWindow() {
+            let windowWidth = window.innerWidth;
+            if (window.matchMedia("(min-width: 1200px)").matches) {
+                document.querySelector("#main_container").style.margin = "0 " + (windowWidth - 1200) / 2 + "px";
+            } else {
+                document.querySelector("#main_container").style.margin = "0";
+            }
+        }
+
+        /*window.onscroll = function (e) {
+          var speedOfImg = .2;
+          var imgSpeed = window.pageYOffset * speedOfImg;
+          document.querySelector("#splash").style.transform = "translateY(" + imgSpeed + "px)";
+          document.querySelector("#space_top").style.transform = "translateY(" + imgSpeed + "px)";
+        }*/
+
+
+
+
+
+
+
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get("id");
+        let endpoint = "https://spreadsheets.google.com/feeds/list/1AdgP4T0S2sqYOZNl3aHq_vHGg7hOj5ulN23DWNIHV48/2/public/values?alt=json";
+        let retter = [];
+        let popUp = document.querySelector("#popup");
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            console.log("start");
+            var windowWidth = window.innerWidth;
+            if (window.matchMedia("(min-width: 1200px)").matches) {
+                document.querySelector("#main_container").style.margin = "0 " + (windowWidth - 1200) / 2 + "px";
+            } else {
+                document.querySelector("#main_container").style.margin = "0 20px";
+            }
+
+
+
+            resizeWindow();
+        }
+
+
+
+        document.querySelector("button").addEventListener("click", () => {
+            location.href = `produkter.html?kategori=alle`;
+        });
+
+
+
+
+        document.querySelector("#burger").addEventListener("click", menuDown);
+
+        function menuDown() {
+            document.querySelector("#burger").classList.remove("burger_up");
+            document.querySelector("#burger").classList.add("burger_down");
+            document.querySelector("#nav_bg").classList.remove("burger_up");
+            document.querySelector("#nav_bg").classList.add("burger_down");
+            document.querySelector("#nav3").classList.remove("burger_up");
+            document.querySelector("#nav3").classList.add("burger_down");
+
+
+            document.querySelector("#burger").removeEventListener("click", menuDown);
+            document.querySelector("#burger").addEventListener("click", menuUp);
+            document.querySelector("#nav_bg").addEventListener("click", menuUp);
+        }
+
+        function menuUp() {
+            document.querySelector("#burger").classList.remove("burger_down");
+            document.querySelector("#burger").classList.add("burger_up");
+            document.querySelector("#nav_bg").classList.remove("burger_down");
+            document.querySelector("#nav_bg").classList.add("burger_up");
+            document.querySelector("#nav3").classList.remove("burger_down");
+            document.querySelector("#nav3").classList.add("burger_up");
+
+
+            document.querySelector("#nav_bg").removeEventListener("click", menuUp);
+            document.querySelector("#burger").removeEventListener("click", menuUp);
+            document.querySelector("#burger").addEventListener("click", menuDown);
+        }
+
+    </script>
+</body>
+
+</html>
