@@ -985,6 +985,20 @@ footer p {
 
 /*------ om os ------*/
 
+#omos {
+
+    max-width: 1160px;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    transform: translateY(0vh);
+    border: 1px solid #1717AF;
+
+}
+
+
+
 
 .os_billede {
     width: 100%;
@@ -996,6 +1010,23 @@ footer p {
     z-index: 4;
     max-width: 1200px;
     max-height: 700px;
+
+}
+
+.os_wrapper {
+    flex-basis: 500px;
+    flex-grow: 1;
+    width: 50%;
+}
+
+.os_txt {
+    flex-basis: 500px;
+    flex-grow: 2;
+    width: 50%;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 

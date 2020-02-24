@@ -44,115 +44,119 @@
         </header>
         <div class="spacing1"></div>
 
-        <div id="omos">
-            <div class="os_billede"></div>
-            <div class="tekst">
-                <h1>OM OS</h1><br>
-                <h2>Elsker du også vintage tøj?</h2><br>
-                <p>Så vil du elske Secondhand Sunday, fordi vi har mode fra de sidste årtier til gode priser.<br>
 
-                    Og det bedste ved dette er at alt alt tøjet er unik, som du ikke finder andre steder. <br>
-                    Shop jakker, kjoler, T-shirts og co. og gør miljøet og din pung en tjeneste. <br>
-                    Hvis du værdsætter bæredygtighed og kan lide at handle bevidst, er du kommet til det rigtige sted!</p>
+
+        <div class="omos">
+
+            <div class="os_txt">
+                <div class="os_tekst">
+                    <h1>OM OS</h1><br>
+                    <h2>Elsker du også vintage tøj?</h2><br>
+                    <p>Så vil du elske Secondhand Sunday, fordi vi har mode fra de sidste årtier til gode priser.<br>
+
+                        Og det bedste ved dette er at alt alt tøjet er unik, som du ikke finder andre steder. <br>
+                        Shop jakker, kjoler, T-shirts og co. og gør miljøet og din pung en tjeneste. <br>
+                        Hvis du værdsætter bæredygtighed og kan lide at handle bevidst, er du kommet til det rigtige sted!</p>
+                </div>
+            </div>
+            <div class="os_wrapper">
+                <div class="os_billede"> </div>
             </div>
         </div>
 
-    </div>
-    <script>
-        window.onresize = function(event) {
-            let windowWidth = window.innerWidth;
-            if (window.matchMedia("(min-width: 1200px)").matches) {
-                document.querySelector("#main_container").style.margin = "0 " + (windowWidth - 1200) / 2 + "px";
-            } else {
-                document.querySelector("#main_container").style.margin = "0";
-            }
-        }
 
-        function resizeWindow() {
-            let windowWidth = window.innerWidth;
-            if (window.matchMedia("(min-width: 1200px)").matches) {
-                document.querySelector("#main_container").style.margin = "0 " + (windowWidth - 1200) / 2 + "px";
-            } else {
-                document.querySelector("#main_container").style.margin = "0";
-            }
-        }
-
-        /*window.onscroll = function (e) {
-          var speedOfImg = .2;
-          var imgSpeed = window.pageYOffset * speedOfImg;
-          document.querySelector("#splash").style.transform = "translateY(" + imgSpeed + "px)";
-          document.querySelector("#space_top").style.transform = "translateY(" + imgSpeed + "px)";
-        }*/
-
-
-
-
-
-
-
-
-        const urlParams = new URLSearchParams(window.location.search);
-        const id = urlParams.get("id");
-        let endpoint = "https://spreadsheets.google.com/feeds/list/1AdgP4T0S2sqYOZNl3aHq_vHGg7hOj5ulN23DWNIHV48/2/public/values?alt=json";
-        let retter = [];
-        let popUp = document.querySelector("#popup");
-
-        document.addEventListener("DOMContentLoaded", start);
-
-        function start() {
-            console.log("start");
-            var windowWidth = window.innerWidth;
-            if (window.matchMedia("(min-width: 1200px)").matches) {
-                document.querySelector("#main_container").style.margin = "0 " + (windowWidth - 1200) / 2 + "px";
-            } else {
-                document.querySelector("#main_container").style.margin = "0 20px";
+        <script>
+            window.onresize = function(event) {
+                let windowWidth = window.innerWidth;
+                if (window.matchMedia("(min-width: 1200px)").matches) {
+                    document.querySelector("#main_container").style.margin = "0 " + (windowWidth - 1200) / 2 + "px";
+                } else {
+                    document.querySelector("#main_container").style.margin = "0";
+                }
             }
 
+            function resizeWindow() {
+                let windowWidth = window.innerWidth;
+                if (window.matchMedia("(min-width: 1200px)").matches) {
+                    document.querySelector("#main_container").style.margin = "0 " + (windowWidth - 1200) / 2 + "px";
+                } else {
+                    document.querySelector("#main_container").style.margin = "0";
+                }
+            }
+
+            /*window.onscroll = function (e) {
+              var speedOfImg = .2;
+              var imgSpeed = window.pageYOffset * speedOfImg;
+              document.querySelector("#splash").style.transform = "translateY(" + imgSpeed + "px)";
+              document.querySelector("#space_top").style.transform = "translateY(" + imgSpeed + "px)";
+            }*/
 
 
-            resizeWindow();
-        }
-
-
-
-        document.querySelector("button").addEventListener("click", () => {
-            location.href = `produkter.html?kategori=alle`;
-        });
 
 
 
 
-        document.querySelector("#burger").addEventListener("click", menuDown);
-
-        function menuDown() {
-            document.querySelector("#burger").classList.remove("burger_up");
-            document.querySelector("#burger").classList.add("burger_down");
-            document.querySelector("#nav_bg").classList.remove("burger_up");
-            document.querySelector("#nav_bg").classList.add("burger_down");
-            document.querySelector("#nav3").classList.remove("burger_up");
-            document.querySelector("#nav3").classList.add("burger_down");
 
 
-            document.querySelector("#burger").removeEventListener("click", menuDown);
-            document.querySelector("#burger").addEventListener("click", menuUp);
-            document.querySelector("#nav_bg").addEventListener("click", menuUp);
-        }
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get("id");
+            let endpoint = "https://spreadsheets.google.com/feeds/list/1AdgP4T0S2sqYOZNl3aHq_vHGg7hOj5ulN23DWNIHV48/2/public/values?alt=json";
+            let retter = [];
+            let popUp = document.querySelector("#popup");
 
-        function menuUp() {
-            document.querySelector("#burger").classList.remove("burger_down");
-            document.querySelector("#burger").classList.add("burger_up");
-            document.querySelector("#nav_bg").classList.remove("burger_down");
-            document.querySelector("#nav_bg").classList.add("burger_up");
-            document.querySelector("#nav3").classList.remove("burger_down");
-            document.querySelector("#nav3").classList.add("burger_up");
+            document.addEventListener("DOMContentLoaded", start);
+
+            function start() {
+                console.log("start");
+                var windowWidth = window.innerWidth;
+                if (window.matchMedia("(min-width: 1200px)").matches) {
+                    document.querySelector("#main_container").style.margin = "0 " + (windowWidth - 1200) / 2 + "px";
+                } else {
+                    document.querySelector("#main_container").style.margin = "0 20px";
+                }
 
 
-            document.querySelector("#nav_bg").removeEventListener("click", menuUp);
-            document.querySelector("#burger").removeEventListener("click", menuUp);
+
+                resizeWindow();
+            }
+
+
+
+            document.querySelector("button").addEventListener("click", () => {
+                location.href = `produkter.html?kategori=alle`;
+            });
+
+
+
+
             document.querySelector("#burger").addEventListener("click", menuDown);
-        }
 
-    </script>
-</body>
+            function menuDown() {
+                document.querySelector("#burger").classList.remove("burger_up");
+                document.querySelector("#burger").classList.add("burger_down");
+                document.querySelector("#nav_bg").classList.remove("burger_up");
+                document.querySelector("#nav_bg").classList.add("burger_down");
+                document.querySelector("#nav3").classList.remove("burger_up");
+                document.querySelector("#nav3").classList.add("burger_down");
 
-</html>
+
+                document.querySelector("#burger").removeEventListener("click", menuDown);
+                document.querySelector("#burger").addEventListener("click", menuUp);
+                document.querySelector("#nav_bg").addEventListener("click", menuUp);
+            }
+
+            function menuUp() {
+                document.querySelector("#burger").classList.remove("burger_down");
+                document.querySelector("#burger").classList.add("burger_up");
+                document.querySelector("#nav_bg").classList.remove("burger_down");
+                document.querySelector("#nav_bg").classList.add("burger_up");
+                document.querySelector("#nav3").classList.remove("burger_down");
+                document.querySelector("#nav3").classList.add("burger_up");
+
+
+                document.querySelector("#nav_bg").removeEventListener("click", menuUp);
+                document.querySelector("#burger").removeEventListener("click", menuUp);
+                document.querySelector("#burger").addEventListener("click", menuDown);
+            }
+        </script>
+</body></html>
