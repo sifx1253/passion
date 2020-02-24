@@ -4,16 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Secondhand Sunday</title>
-  <link rel="stylesheet" href="https://use.typekit.net/wyt4gfe.css">
+  <title>SS -</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.typekit.net/wyt4gfe.css">
 </head>
 
 <body>
-  <section id="splash_section">
-    <div id="splash"></div>
-  </section>
-  <div id="space_top"></div>
   <div id="main_container">
     <div id="nav_bg"></div>
     <header>
@@ -46,48 +42,28 @@
         </div>
       </nav>
     </header>
-    <section id="sorter_section">
-      <h1 class="kollektion">Vores kollektion</h1>
+    <div class="spacing1"></div>
+    <section id="lightbox_section">
+      <div id="popup">
+        <div class="ret_popup">
+          <div class="img_detail_wrap">
+            <div class="img_overlay img_overlay2"></div>
+            <div id="popup_billede">
+            </div>
+          </div>
+          <div class="tekst_detail_wrap">
+            <div id="popup_tekst">
+              <h2 id="popup_navn"></h2>
+              <p id="popup_lang"></p>
+            </div>
+            <div class="pris_button_wrap">
+              <h3 id="popup_pris" style="align-self:flex-end;margin:20px 0;"></h3>
+              <button style="width:200px;align-self:flex-end;margin:30px 30px;">Tilbage</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-    <section id="retter_section">
-      <main id="data_fill" class="data_fill_class">
-        <article class="ret filter" data-kategori="alle">
-          <div class="ret_billede ret_billede1">
-          </div>
-          <div class="ret_tekst">
-            <h2 class="navn navn1">Alle produkter</h2>
-            <p class="kort kort1">Se alle produkter her</p>
-          </div>
-        </article>
-        <article class="ret filter" data-kategori="jakker">
-          <div class="ret_billede ret_billede2">
-          </div>
-          <div class="ret_tekst">
-            <h2 class="navn navn2">Jakker</h2>
-            <p class="kort kort2">Se vores udvalg af jakker</p>
-          </div>
-        </article>
-        <article class="ret filter" data-kategori="kjoler">
-          <div class="ret_billede ret_billede3">
-          </div>
-          <div class="ret_tekst">
-            <h2 class="navn navn3">Kjoler</h2>
-            <p class="kort kort3">Se alle vores kjoler</p>
-          </div>
-        </article>
-        <article class="ret filter" data-kategori="toppe">
-          <div class="ret_billede ret_billede4">
-          </div>
-          <div class="ret_tekst">
-            <h2 class="navn navn4">Toppe</h2>
-            <p class="kort kort4">Se vores smarte toppe</p>
-          </div>
-        </article>
-      </main>
-    </section>
-    <footer>
-      <p>Sencondhand Sunday, Feb. 2020</p>
-    </footer>
   </div>
   <script>
     window.onresize = function(event) {
@@ -108,6 +84,12 @@
       }
     }
 
+    /*window.onscroll = function (e) {
+      var speedOfImg = .2;
+      var imgSpeed = window.pageYOffset * speedOfImg;
+      document.querySelector("#splash").style.transform = "translateY(" + imgSpeed + "px)";
+      document.querySelector("#space_top").style.transform = "translateY(" + imgSpeed + "px)";
+    }*/
 
 
 
@@ -120,14 +102,12 @@
     const id = urlParams.get("id");
     let endpoint = "https://spreadsheets.google.com/feeds/list/1AdgP4T0S2sqYOZNl3aHq_vHGg7hOj5ulN23DWNIHV48/2/public/values?alt=json";
     let retter = [];
-    let filter = "alle";
     let popUp = document.querySelector("#popup");
 
     document.addEventListener("DOMContentLoaded", start);
 
     function start() {
       console.log("start");
-
       var windowWidth = window.innerWidth;
       if (window.matchMedia("(min-width: 1200px)").matches) {
         document.querySelector("#main_container").style.margin = "0 " + (windowWidth - 1200) / 2 + "px";
@@ -135,27 +115,45 @@
         document.querySelector("#main_container").style.margin = "0 20px";
       }
 
-      document.querySelectorAll("#sorter_section button").forEach(knap => {
-        knap.addEventListener("click", sorterRetter)
-      });
-
-      document.querySelectorAll(".filter").forEach(each => {
-        each.addEventListener("click", clickFilter);
-
-      });
+      let retter = []
+      hentJSON();
 
       resizeWindow();
     }
 
-    //sender sitet videre til produkter.html
-    function clickFilter() {
-      console.log("click", this);
+    async function hentJSON() {
+      console.log("hent json");
 
-      location.href = "produkter.html?kategori=" + this.dataset.kategori;
+      const response = await fetch(endpoint);
+      retter = await response.json();
+      visRetter();
     }
 
+    function visRetter() {
+      console.log("visRetter");
+      let dataFill = document.querySelector("#data_fill");
+      let template = document.querySelector("#template");
 
+      retter.feed.entry.forEach(element => {
+        if (element.gsx$id.$t == id) {
+          popUp.querySelector(".ret_popup #popup_billede").style.backgroundImage = `url(img/${element.gsx$billede.$t}.jpg)`;
+          popUp.querySelector(".ret_popup #popup_navn").textContent = `${element.gsx$navn.$t}`;
+          popUp.querySelector(".ret_popup").style.display = "flex";
+          popUp.querySelector(".ret_popup #popup_lang").textContent = `${element.gsx$lang.$t}`;
+          popUp.querySelector(".ret_popup #popup_pris").textContent = `Pris: ${element.gsx$pris.$t},-`;
+          popUp.style.visibility = "visible";
+          popUp.style.position = "relative";
+          popUp.style.display = "inherit";
+          popUp.style.height = "auto";
+        }
+        document.querySelector("head title").textContent = `SS - ${element.gsx$navn.$t}`;
+      });
+      resizeWindow();
+    }
 
+    document.querySelector("button").addEventListener("click", () => {
+      location.href = `produkter.html?kategori=alle`;
+    });
 
 
 
@@ -189,5 +187,8 @@
       document.querySelector("#burger").removeEventListener("click", menuUp);
       document.querySelector("#burger").addEventListener("click", menuDown);
     }
+
   </script>
-</body></html>
+</body>
+
+</html>
