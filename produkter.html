@@ -30,6 +30,7 @@
             </div>
           </div>
           <a href="om_os.html">Om os</a>
+          <a href="#">Kurv</a>
           <div id="burger"></div>
         </div>
         <div id="nav3">
@@ -40,6 +41,7 @@
           <a href="produkter.html?kategori=kjoler" class="under_kategori">Kjoler</a>
           <a href="produkter.html?kategori=toppe" class="under_kategori">Toppe</a>
           <a href="om_os.html">Om os</a>
+          <a href="#">Kurv</a>
         </div>
       </nav>
     </header>
@@ -73,32 +75,6 @@
     </footer>
   </div>
   <script>
-    window.onresize = function(event) {
-      let windowWidth = window.innerWidth;
-      if (window.matchMedia("(min-width: 1200px)").matches) {
-        document.querySelector("#main_container").style.margin = "0 " + (windowWidth - 1200) / 2 + "px";
-      } else {
-        document.querySelector("#main_container").style.margin = "0";
-      }
-    }
-
-    function resizeWindow() {
-      let windowWidth = window.innerWidth;
-      if (window.matchMedia("(min-width: 1200px)").matches) {
-        document.querySelector("#main_container").style.margin = "0 " + (windowWidth - 1200) / 2 + "px";
-      } else {
-        document.querySelector("#main_container").style.margin = "0";
-      }
-    }
-
-
-
-
-
-
-
-
-
     const urlParams = new URLSearchParams(window.location.search);
     const kategori = urlParams.get("kategori");
     let endpoint = "https://spreadsheets.google.com/feeds/list/1AdgP4T0S2sqYOZNl3aHq_vHGg7hOj5ulN23DWNIHV48/2/public/values?alt=json";
@@ -110,12 +86,7 @@
     function start() {
       console.log("start");
 
-      var windowWidth = window.innerWidth;
-      if (window.matchMedia("(min-width: 1200px)").matches) {
-        document.querySelector("#main_container").style.margin = "0 " + (windowWidth - 1200) / 2 + "px";
-      } else {
-        document.querySelector("#main_container").style.margin = "0 20px";
-      }
+
 
       document.querySelectorAll("#sorter_section button").forEach(knap => {
         knap.addEventListener("click", sorterRetter)
@@ -126,9 +97,6 @@
 
       let retter = []
       hentJSON();
-
-
-      resizeWindow();
 
       document.querySelector(".valgt").classList.remove("valgt");
       document.querySelector(`.${kategori}`).classList.add("valgt");
