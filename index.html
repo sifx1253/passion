@@ -220,17 +220,13 @@
     function start() {
       console.log("start");
 
-
-
       document.querySelectorAll("#sorter_section button").forEach(knap => {
         knap.addEventListener("click", sorterRetter)
       });
 
       document.querySelectorAll(".filter").forEach(each => {
         each.addEventListener("click", clickFilter);
-
       });
-
     }
 
     //sender sitet videre til produkter.html
@@ -239,11 +235,6 @@
 
       location.href = "produkter.html?kategori=" + this.dataset.kategori;
     }
-
-
-
-
-
 
 
     document.querySelector("#burger").addEventListener("click", menuDown);

@@ -279,7 +279,7 @@ nav {
   position: relative;
   z-index: -10;
   margin-top: -600px;
-  transform: translate(-0px, 620px);
+  transform: translate(0px, 620px);
 }
 
 #ret_billede {
@@ -309,6 +309,11 @@ nav {
 
 .ret:hover {
   cursor: pointer;
+}
+
+.ret:hover .img_overlay {
+  background-size: 10px 10px;
+
 }
 
 .ret:nth-child(4n+0):hover .img_overlay {
@@ -359,24 +364,20 @@ nav {
   transform: translate(-20px, -10px);
 }
 
-/*.ret:hover #ret_tekst {
-  background-color: #F4C3CB;
-}*/
-
-.ret:nth-child(4n+3):hover #pris {
-  transform: translate(30px, -55px);
-}
-
 .ret:nth-child(4n+0):hover #pris {
-  transform: translate(0px, -45px);
+  transform: translate(10px, -35px);
 }
 
 .ret:nth-child(4n+1):hover #pris {
-  transform: translate(40px, -55px);
+  transform: translate(-10px, -35px);
 }
 
 .ret:nth-child(4n+2):hover #pris {
-  transform: translate(10px, -45px);
+  transform: translate(20px, -35px);
+}
+
+.ret:nth-child(4n+3):hover #pris {
+  transform: translate(20px, -45px);
 }
 
 #pris {
@@ -384,9 +385,9 @@ nav {
   padding: 5px 15px 10px 15px;
   margin: 0 10px 50px 10px;
   margin-bottom: 50px;
-  color: #fff;
+  color: #F4C3CB;
   background-color: #1717AF;
-  transform: rotate(0deg) translate(20px, -35px);
+  transform: rotate(0deg) translate(-0px, -15px);
   transition: .2s;
   transition-timing-function: steps(2, jump-start);
   align-self: flex-end;
@@ -490,40 +491,38 @@ nav {
 
 
 
-
-
-#lightbox_bg {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  background-color: #231B21;
-  display: none;
+.ret_popup {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  grid-gap: 20px;
 }
 
 #popup_billede {
-  width: 100%;
-  height: 70vw;
+  height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  z-index: 3;
-  max-width: 1200px;
-  max-height: 700px;
+  max-height: 800px;
+  border: 1px solid #1717AF;
+}
+
+.img_detail_wrap {}
+
+.tekst_detail_wrap {
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #1717AF;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  grid-column: span 2;
 }
 
 .img_overlay2 {
-  width: 1180px;
   height: 720px;
   margin-top: -720px;
   transform: translate(-0px, 720px);
-}
-
-#popup_tekst {
-  padding: 10px 30px;
-  background-color: #fff;
 }
 
 #popup_lang {
@@ -539,34 +538,6 @@ nav {
   font-size: 5rem;
 }
 
-.ret_popup {
-  width: calc(100vw - 40px);
-  max-width: 1160px;
-  position: fixed;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  transform: translateY(0vh);
-  border: 1px solid #1717AF;
-}
-
-.img_detail_wrap {
-  width: 50%;
-  flex-basis: 500px;
-  flex-grow: 1;
-}
-
-.tekst_detail_wrap {
-  width: 50%;
-  flex-basis: 500px;
-  flex-grow: 2;
-  height: 700px;
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .pris_button_wrap {
   display: flex;
   justify-content: space-between;
@@ -575,63 +546,12 @@ nav {
 #popup_pris {
   padding: 10px 30px 20px 30px;
   background-color: #fff;
-  transition: .4s;
-  transition-timing-function: cubic-bezier(.3, 0, .2, 1);
   font-size: 2rem;
 }
 
-#popup {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  visibility: hidden;
-  transform: translateY(20px);
-}
 
 
 
-#splash_section {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-}
-
-.splash_left {
-  animation: splash_left-kf 1.4s cubic-bezier(.3, 0, .2, 1) both;
-}
-
-@keyframes splash_left-kf {
-  0% {
-    transform: translateX(100vw);
-  }
-
-  100% {
-    transform: translateX(0vw);
-  }
-}
-
-.splash_right {
-  animation: splash_right-kf 1.4s cubic-bezier(.3, 0, .2, 1) both;
-}
-
-@keyframes splash_right-kf {
-  0% {
-    transform: translateX(0vw);
-  }
-
-  100% {
-    transform: translateX(-100vw);
-  }
-}
 
 
 
@@ -870,15 +790,11 @@ footer p {
 }
 
 .os_wrapper {
-  flex-basis: 400px;
-  flex-grow: 3;
   grid-column: span 2;
 }
 
 .os_txt {
   background-color: #fff;
-  flex-basis: 400px;
-  flex-grow: 1;
   padding: 10px;
   border: 1px solid #1717AF;
 }
@@ -890,8 +806,8 @@ footer p {
 #klima_oplysninger {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  grid-gap: 0px 80px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-gap: 0px 100px;
 }
 
 .box_klima {
@@ -1056,6 +972,22 @@ b .center {
     transform: rotate(0) translateY(-20px);
   }
 
+  .ret:nth-child(4n+0):hover .img_overlay {
+    transform: translate(0, 620px);
+  }
+
+  .ret:nth-child(4n+1):hover .img_overlay {
+    transform: translate(0, 620px);
+  }
+
+  .ret:nth-child(4n+2):hover .img_overlay {
+    transform: translate(0, 620px);
+  }
+
+  .ret:nth-child(4n+3):hover .img_overlay {
+    transform: translate(0, 620px);
+  }
+
   #pris {
     transform: rotate(0deg) translateY(-20px);
   }
@@ -1121,7 +1053,9 @@ b .center {
     padding-left: 10px;
   }
 
-  .omos {
+  .omos,
+  .ret_popup {
     grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px 0;
   }
 }
