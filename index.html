@@ -57,7 +57,7 @@
   </div>
 
   <div class="arrow_wrap">
-    <img class="arrow_small center beat" src="img/pil.svg" alt="downarrow">
+    <img class="arrow_small center beat p-action-click" src="img/pil.svg" alt="downarrow">
   </div>
   <div id="space_top"></div>
   <div id="main_container">
@@ -67,7 +67,7 @@
         <a href="index.html">
           <div id="nav1"></div>
         </a>
-        <div id="nav2">
+        <div id="nav2" class="p-action-click">
           <a href="index.html">Forside</a>
           <div class="dropdown_wrap">
             <a href="produkter.html?kategori=alle" class="show">Produkter</a>
@@ -99,7 +99,7 @@
     </section>
     <section id="retter_section">
       <main id="data_fill" class="data_fill_class">
-        <article class="filter margin_kategori" data-kategori="alle">
+        <article class="filter  margin_kategori p-action-click" data-kategori="alle">
           <div class="ret_billede ret_billede1">
           </div>
           <div class="ret_tekst">
@@ -108,7 +108,7 @@
           </div>
           <div class="img_overlay img_overlay5"></div>
         </article>
-        <article class="filter margin_kategori" data-kategori="jakker">
+        <article class="filter  margin_kategori p-action-click" data-kategori="jakker">
           <div class="ret_billede ret_billede2">
           </div>
           <div class="ret_tekst">
@@ -117,7 +117,7 @@
           </div>
           <div class="img_overlay img_overlay5"></div>
         </article>
-        <article class="filter margin_kategori" data-kategori="kjoler">
+        <article class="filter  margin_kategori p-action-click" data-kategori="kjoler">
           <div class="ret_billede ret_billede3">
           </div>
           <div class="ret_tekst">
@@ -126,7 +126,7 @@
           </div>
           <div class="img_overlay img_overlay5"></div>
         </article>
-        <article class="filter margin_kategori" data-kategori="toppe">
+        <article class="filter  margin_kategori p-action-click" data-kategori="toppe">
           <div class="ret_billede ret_billede4">
           </div>
           <div class="ret_tekst">
@@ -169,7 +169,7 @@
       <p>SS@gmail.com</p>
     </footer>
   </div>
-
+  <script src="pointer.js"></script>
   <script>
     document.querySelector(".arrow_small").addEventListener("click", scrollDown);
 
@@ -245,5 +245,8 @@
       document.querySelector("#burger").removeEventListener("click", menuUp);
       document.querySelector("#burger").addEventListener("click", menuDown);
     }
+    init_pointer({
+
+    })
   </script>
 </body></html>

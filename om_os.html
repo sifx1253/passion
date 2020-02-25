@@ -17,7 +17,7 @@
         <a href="index.html">
           <div id="nav1"></div>
         </a>
-        <div id="nav2">
+        <div id="nav2" class="p-action-click">
           <a href="index.html">Forside</a>
           <div class="dropdown_wrap">
             <a href="produkter.html?kategori=alle" class="show">Produkter</a>
@@ -73,7 +73,7 @@
   </div>
 
 
-
+<script src="pointer.js"></script>
   <script>
     document.querySelector("#burger").addEventListener("click", menuDown);
 
@@ -104,5 +104,8 @@
       document.querySelector("#burger").removeEventListener("click", menuUp);
       document.querySelector("#burger").addEventListener("click", menuDown);
     }
+    init_pointer({
+
+    })
   </script>
 </body></html>

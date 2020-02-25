@@ -113,10 +113,11 @@ button {
   transition: .2s;
   transition-timing-function: steps(2, jump-start);
   border: 1px solid #1717AF;
+  cursor: none;
 }
 
 button:hover {
-  cursor: pointer;
+  cursor: none;
   transition: .2s;
   transition-timing-function: steps(2, jump-start);
   background-color: #1717AF;
@@ -130,10 +131,9 @@ button:hover {
   transform: scale(1);
   transition: .2s;
   transition-timing-function: steps(2, jump-start);
-  background-color: #fff;
+  background-color: #F4C3CB;
   border: 1px solid #1717AF;
   transition: .05s;
-  cursor: inherit;
 }
 
 button:focus {
@@ -207,6 +207,7 @@ nav {
 }
 
 #nav2 a {
+  padding: 15px 0;
   height: 100%;
   color: #F4C3CB;
   text-decoration: none;
@@ -229,10 +230,6 @@ nav {
 .dropdown a,
 .show {
   display: block;
-}
-
-.show {
-  padding: 15px 0;
 }
 
 #nav2 div {
@@ -269,7 +266,7 @@ nav {
 
 .img_overlay {
   width: 100%;
-  height: 620px;
+  height: 600px;
   background-image: radial-gradient(#1717AF 15%, transparent 16%),
     radial-gradient(#1717AF 15%, transparent 16%);
   background-size: 10px 10px;
@@ -278,8 +275,10 @@ nav {
   transition-timing-function: steps(2, jump-start);
   position: relative;
   z-index: -10;
-  margin-top: -600px;
+  margin-top: -620px;
+  margin-bottom: 0;
   transform: translate(20px, 620px);
+  padding: 0;
 }
 
 #ret_billede {
@@ -305,10 +304,6 @@ nav {
 .ret {
   display: flex;
   flex-direction: column;
-}
-
-.ret:hover {
-  cursor: pointer;
 }
 
 .ret:hover .img_overlay {
@@ -398,7 +393,7 @@ nav {
   margin: 10px auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-gap: 0px 100px;
+  grid-gap: 20px 100px;
 }
 
 
@@ -462,10 +457,6 @@ nav {
   transform: translate(0, -10px);
 }
 
-.filter {
-  cursor: pointer;
-}
-
 
 
 
@@ -484,7 +475,6 @@ nav {
 .ret {
   transition: .4s;
   transition-timing-function: cubic-bezier(.3, 0, .2, 1);
-  cursor: pointer;
 }
 
 
@@ -537,21 +527,32 @@ nav {
 .pris_button_wrap {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   flex-wrap: wrap;
+  height: 100%;
 }
 
 #popup_pris {
   padding: 50px 0 15px 0;
   background-color: #fff;
-  font-size: 2rem;
+  font-size: 1.5rem;
   align-self: flex-end;
   margin: 0;
 }
 
-#popup_button {
+#popup_button_tilbage {
   width: 200px;
   align-self: flex-end;
   margin: 0;
+  background-color: #fff;
+  border: 1px solid #1717AF;
+  color: #1717AF;
+}
+
+#popup_button_kurv {
+  width: 200px;
+  align-self: flex-end;
+  margin: 10px 0 0 0;
 }
 
 
@@ -788,7 +789,7 @@ footer p {
 }
 
 .img_overlay4 {
-  transform: translate(-20px, 345px);
+  transform: translate(-20px, 335px);
   height: 300px;
 }
 
@@ -904,7 +905,6 @@ b .center {
 
 .arrow_small {
   position: absolute;
-  cursor: pointer;
   width: 50px;
 }
 
@@ -1103,4 +1103,39 @@ b .center {
   #popup_navn span {
     font-size: 3rem;
   }
+}
+
+
+#pointer-dot {
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border: 2px solid #1717AF;
+  position: fixed;
+  z-index: 101;
+  pointer-events: none;
+  transition: border-radius 0.5s;
+  transition-timing-function: steps(5, jump-start);
+}
+
+#pointer-ring {
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border: 2px solid #1717AF;
+  position: fixed;
+  z-index: 100;
+  pointer-events: none;
+  transition: border-radius 0.5s;
+  transition-timing-function: steps(5, jump-start);
+}
+
+html {
+  cursor: none !important;
+}
+
+a {
+  cursor: none !important;
 }

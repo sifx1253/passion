@@ -18,7 +18,7 @@
         <a href="index.html">
           <div id="nav1"></div>
         </a>
-        <div id="nav2">
+        <div id="nav2" class="p-action-click">
           <a href="index.html">Forside</a>
           <div class="dropdown_wrap">
             <a href="produkter.html?kategori=alle" class="show">Produkter</a>
@@ -49,14 +49,14 @@
     <section id="sorter_section">
       <h1>Sorter</h1>
       <button data-kategori="alle" class="valgt alle">Alle</button>
-      <button data-kategori="jakker" class="jakker">Jakker</button>
-      <button data-kategori="kjoler" class="kjoler">Kjoler</button>
-      <button data-kategori="toppe" class="toppe">Toppe</button>
+      <button data-kategori="jakker" class="jakker p-action-click">Jakker</button>
+      <button data-kategori="kjoler" class="kjoler p-action-click">Kjoler</button>
+      <button data-kategori="toppe" class="toppe p-action-click">Toppe</button>
     </section>
     <section id="retter_section">
       <main id="data_fill"></main>
       <template id="template">
-        <article class="ret">
+        <article class="ret p-action-click">
 
           <div class="img_overlay"></div>
           <div id="ret_billede">
@@ -70,15 +70,15 @@
         </article>
       </template>
     </section>
-<footer>
-  <h2>©Secondhand Sunday - Feb 2020</h2>
-  <p>Fashionstrædet 12</p>
-  <p>2200 København N</p>
-  <p>TEL: XXXXXX</p>
-  <p>SS@gmail.com</p>
-</footer>
+    <footer>
+      <h2>©Secondhand Sunday - Feb 2020</h2>
+      <p>Fashionstrædet 12</p>
+      <p>2200 København N</p>
+      <p>TEL: XXXXXX</p>
+      <p>SS@gmail.com</p>
+    </footer>
   </div>
-
+  <script src="pointer.js"></script>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const kategori = urlParams.get("kategori");
@@ -103,8 +103,10 @@
       let retter = []
       hentJSON();
 
+      document.querySelector(".valgt").classList.add("p-action-click");
       document.querySelector(".valgt").classList.remove("valgt");
       document.querySelector(`.${kategori}`).classList.add("valgt");
+      document.querySelector(`.${kategori}`).classList.remove("p-action-click");
     }
 
     async function hentJSON() {
@@ -144,8 +146,10 @@
       console.log("sorterRetter");
       filter = this.dataset.kategori;
       console.log(filter + " filter");
+      document.querySelector(".valgt").classList.add("p-action-click");
       document.querySelector(".valgt").classList.remove("valgt");
       this.classList.add("valgt");
+      this.classList.remove("p-action-click");
       visRetter();
 
       document.querySelector("head title").textContent = `SS - ${filter}`;
@@ -189,5 +193,8 @@
       document.querySelector("#burger").removeEventListener("click", menuUp);
       document.querySelector("#burger").addEventListener("click", menuDown);
     }
+    init_pointer({
+
+    })
   </script>
 </body></html>
