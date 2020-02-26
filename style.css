@@ -215,7 +215,7 @@ nav {
 }
 
 #nav2 a {
-  padding: 15px 0;
+  padding: 16px 0;
   height: 100%;
   color: #F4C3CB;
   text-decoration: none;
@@ -259,7 +259,11 @@ nav {
 }
 
 .dropdown_wrap:hover .dropdown {
-  transform: translate(-10px, 0px);
+  transform: translate(-10px, -5px);
+}
+
+.dropdown:hover {
+  transform: translate(-10px, -5px);
 }
 
 
@@ -1146,4 +1150,151 @@ html {
 
 a {
   cursor: none !important;
+}
+
+
+
+
+
+/*--------INTRO OUTRO---------*/
+
+#loading_wrap {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  visibility: hidden;
+}
+
+#loading_inner {
+  visibility: visible;
+}
+
+#logo_container {
+  width: 100px;
+  height: 100px;
+  background-image: url(billeder/logo/logo.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.square {
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  position: fixed;
+}
+
+.square1_ani {
+  animation: square1_ani-kf 2s steps(4) infinite both;
+}
+
+.square2_ani {
+  animation: square1_ani-kf 2s steps(4) .66s infinite both;
+}
+
+.square3_ani {
+  animation: square1_ani-kf 2s steps(4) 1.33s infinite both;
+}
+
+@keyframes square1_ani-kf {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(0, 0);
+  }
+
+  25% {
+    transform: translate(50px, 0);
+  }
+
+  35% {
+    transform: translate(50px, 0);
+  }
+
+  50% {
+    transform: translate(50px, 50px);
+  }
+
+  60% {
+    transform: translate(50px, 50px);
+  }
+
+  75% {
+    transform: translate(0, 50px);
+  }
+
+  85% {
+    transform: translate(0, 50px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+
+#intro_holder {
+  width: 100vw;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(200px, 1fr));
+  grid-gap: 0px;
+  z-index: 49;
+  position: fixed;
+  transform-origin: bottom right;
+  visibility: hidden;
+}
+
+#intro_holder article {
+  background-color: #1717AF;
+  height: 200px;
+  visibility: visible;
+}
+
+.article_out_ani {
+  animation: article_out_ani-kf .5s steps(5) both;
+}
+
+@keyframes article_out_ani-kf {
+  0% {
+    visibility: visible;
+    width: 100%;
+    transform: rotate(0deg) translate(0);
+  }
+
+  99% {
+    width: 0%;
+    transform: rotate(450deg) scale(7, 2);
+  }
+
+  100% {
+    visibility: hidden;
+  }
+}
+
+.article_in_ani {
+  animation: article_in_ani-kf .5s steps(5) both;
+}
+
+@keyframes article_in_ani-kf {
+  0% {
+    visibility: visible;
+    width: 0%;
+    transform: rotate(450deg) scale(7, 2);
+  }
+
+  100% {
+    width: 100%;
+    transform: rotate(0deg) translate(0);
+  }
 }

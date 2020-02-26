@@ -14,32 +14,34 @@
     <div id="nav_bg"></div>
     <header>
       <nav>
-        <a href="index.html">
-          <div id="nav1"></div>
+        <a href="#" id="link-forside0" class="p-action-click">
+          <div id="nav1">
+            <p>secondhand <br>sunday</p>
+          </div>
         </a>
         <div id="nav2" class="p-action-click">
-          <a href="index.html">Forside</a>
+          <a href="#" id="link-forside1">Forside</a>
           <div class="dropdown_wrap">
-            <a href="produkter.html?kategori=alle" class="show">Produkter</a>
+            <a href="#" id="link-produkter1" class="show">Produkter</a>
             <div class="dropdown">
-              <a href="produkter.html?kategori=alle">Alle</a>
-              <a href="produkter.html?kategori=jakker">Jakker</a>
-              <a href="produkter.html?kategori=kjoler">Kjoler</a>
-              <a href="produkter.html?kategori=toppe">Toppe</a>
+              <a href="#" id="link-alle1">Alle</a>
+              <a href="#" id="link-jakker1">Jakker</a>
+              <a href="#" id="link-kjoler1">Kjoler</a>
+              <a href="#" id="link-toppe1">Toppe</a>
             </div>
           </div>
-          <a href="om_os.html">Om os</a>
+          <a href="#" id="link-om_os1">Om os</a>
           <a href="#">Kurv</a>
           <div id="burger"></div>
         </div>
-        <div id="nav3">
-          <a href="index.html">Forside</a>
-          <a href="produkter.html?kategori=alle">Produkter</a>
-          <a href="produkter.html?kategori=alle" class="under_kategori">Alle</a>
-          <a href="produkter.html?kategori=jakker" class="under_kategori">Jakker</a>
-          <a href="produkter.html?kategori=kjoler" class="under_kategori">Kjoler</a>
-          <a href="produkter.html?kategori=toppe" class="under_kategori">Toppe</a>
-          <a href="om_os.html">Om os</a>
+        <div id="nav3" class="p-action-click">
+          <a href="#" id="link-forside2">Forside</a>
+          <a href="#" id="link-produkter2">Produkter</a>
+          <a href="#" id="link-alle2" class="under_kategori">Alle</a>
+          <a href="#" id="link-jakker2" class="under_kategori">Jakker</a>
+          <a href="#" id="link-kjoler2" class="under_kategori">Kjoler</a>
+          <a href="#" id="link-toppe2" class="under_kategori">Toppe</a>
+          <a href="#" id="link-om_os2">Om os</a>
           <a href="#">Kurv</a>
         </div>
       </nav>
@@ -60,7 +62,7 @@
           Hvis du værdsætter bæredygtighed og kan lide at handle bevidst, er du kommet til det rigtige sted!</p>
       </div>
       <div class="os_wrapper">
-        <div class="os_billede"> </div>
+        <div class="os_billede p-action-click"> </div>
       </div>
     </div>
     <footer>
@@ -71,10 +73,121 @@
       <p>SS@gmail.com</p>
     </footer>
   </div>
-
-
-<script src="pointer.js"></script>
+  <main id="intro_holder"></main>
+  <!--<div id="loading_wrap">
+  <div id="loading_inner">
+    <div id="logo_container"></div>
+    <div id="loader">
+      <div class="square square1 square1_ani"></div>
+      <div class="square square2 square2_ani"></div>
+      <div class="square square3 square3_ani"></div>
+    </div>
+  </div>
+</div>-->
+  <script src="intro_outro.js"></script>
+  <script src="pointer.js"></script>
   <script>
+    startAniOut();
+
+    document.querySelector("#link-forside0").addEventListener("click", () => {
+      startAniIn();
+      setTimeout(function() {
+        location.href = "index.html"
+      }, 600);
+    });
+    document.querySelector("#link-forside1").addEventListener("click", () => {
+      startAniIn();
+      setTimeout(function() {
+        location.href = "index.html"
+      }, 600);
+    });
+    document.querySelector("#link-produkter1").addEventListener("click", () => {
+      startAniIn();
+      setTimeout(function() {
+        location.href = "produkter.html?kategori=alle"
+      }, 600);
+    });
+    document.querySelector("#link-alle1").addEventListener("click", () => {
+      startAniIn();
+      setTimeout(function() {
+        location.href = "produkter.html?kategori=alle"
+      }, 600);
+    });
+    document.querySelector("#link-jakker1").addEventListener("click", () => {
+      startAniIn();
+      setTimeout(function() {
+        location.href = "produkter.html?kategori=jakker"
+      }, 600);
+    });
+    document.querySelector("#link-kjoler1").addEventListener("click", () => {
+      startAniIn();
+      setTimeout(function() {
+        location.href = "produkter.html?kategori=kjoler"
+      }, 600);
+    });
+    document.querySelector("#link-toppe1").addEventListener("click", () => {
+      startAniIn();
+      setTimeout(function() {
+        location.href = "produkter.html?kategori=toppe"
+      }, 600);
+    });
+    document.querySelector("#link-om_os1").addEventListener("click", () => {
+      startAniIn();
+      setTimeout(function() {
+        location.href = "om_os.html"
+      }, 600);
+    });
+    document.querySelector("#link-forside2").addEventListener("click", () => {
+      startAniIn();
+      setTimeout(function() {
+        location.href = "index.html"
+      }, 600);
+    });
+    document.querySelector("#link-produkter2").addEventListener("click", () => {
+      startAniIn();
+      setTimeout(function() {
+        location.href = "produkter.html?kategori=alle"
+      }, 600);
+    });
+    document.querySelector("#link-alle2").addEventListener("click", () => {
+      startAniIn();
+      setTimeout(function() {
+        location.href = "produkter.html?kategori=alle"
+      }, 600);
+    });
+    document.querySelector("#link-jakker2").addEventListener("click", () => {
+      startAniIn();
+      setTimeout(function() {
+        location.href = "produkter.html?kategori=jakker"
+      }, 600);
+    });
+    document.querySelector("#link-kjoler2").addEventListener("click", () => {
+      startAniIn();
+      setTimeout(function() {
+        location.href = "produkter.html?kategori=kjoler"
+      }, 600);
+    });
+    document.querySelector("#link-toppe2").addEventListener("click", () => {
+      startAniIn();
+      setTimeout(function() {
+        location.href = "produkter.html?kategori=toppe"
+      }, 600);
+    });
+    document.querySelector("#link-om_os2").addEventListener("click", () => {
+      startAniIn();
+      setTimeout(function() {
+        location.href = "om_os.html"
+      }, 600);
+    });
+
+
+
+
+
+
+
+
+
     document.querySelector("#burger").addEventListener("click", menuDown);
 
     function menuDown() {
