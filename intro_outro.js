@@ -5,7 +5,7 @@ createArticles();
 
 function createArticles() {
   console.log("createArticles");
-  if (articleCount < 201) {
+  if (articleCount < 101) {
     let createArticle = document.createElement("article");
     document.querySelector("#intro_holder").appendChild(createArticle);
     articleCount++;
