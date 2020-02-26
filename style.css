@@ -4,6 +4,7 @@ body {
   font-weight: 300;
   font-style: italic;
   line-height: 2rem;
+  text-decoration: none;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -203,7 +204,14 @@ nav {
   background-image: url(billeder/logo/logo.svg);
   background-size: contain;
   background-repeat: no-repeat;
-  margin: 10px 0 10px 0;
+  margin: 14px 0 10px 0;
+}
+
+#nav1 p {
+  color: #F4C3CB;
+  line-height: 1rem;
+  transform: translate(60px, 0px);
+  font-weight: 200;
 }
 
 #nav2 a {
@@ -267,8 +275,8 @@ nav {
 .img_overlay {
   width: 100%;
   height: 600px;
-  background-image: radial-gradient(#1717AF 15%, transparent 16%),
-    radial-gradient(#1717AF 15%, transparent 16%);
+  background-image: radial-gradient(#1717AF 13%, transparent 13%),
+    radial-gradient(#1717AF 13%, transparent 13%);
   background-size: 10px 10px;
   background-position: 0 0, 30px 30px;
   transition: .2s;
