@@ -31,7 +31,7 @@ function startAniOut() {
     setTimeout(function () {
       StopOutAni = false;
     }, 100)
-  }, 1000)
+  }, 600)
 }
 
 function startAniIn() {
@@ -52,7 +52,7 @@ function startAniIn() {
     setTimeout(function () {
       StopOutAni = false;
     }, 100)
-  }, 1000)
+  }, 300)
 }
 
 function introAnimationOut1() {
@@ -88,7 +88,7 @@ function introAnimationOutHalf1() {
     articleIndex--;
     articleIndex--;
     articleIndex--;
-    setTimeout(introAnimationOutHalf1, 3);
+    setTimeout(introAnimationOutHalf1, 1);
   } else {
     articleIndex = 99;
     introAnimationOutHalf2();
@@ -104,7 +104,7 @@ function introAnimationOutHalf2() {
     articleIndex--;
     articleIndex--;
     articleIndex--;
-    setTimeout(introAnimationOutHalf2, 3);
+    setTimeout(introAnimationOutHalf2, 1);
   } else {
     articleIndex = 98;
     introAnimationOutHalf3();
@@ -120,7 +120,7 @@ function introAnimationOutHalf3() {
     articleIndex--;
     articleIndex--;
     articleIndex--;
-    setTimeout(introAnimationOutHalf3, 3);
+    setTimeout(introAnimationOutHalf3, 1);
   } else {
     return;
   }
@@ -159,7 +159,7 @@ function introAnimationInHalf1() {
     articleIndex--;
     articleIndex--;
     articleIndex--;
-    setTimeout(introAnimationInHalf1, 3);
+    setTimeout(introAnimationInHalf1, 1);
   } else {
     articleIndex = 99;
     introAnimationInHalf2();
@@ -175,7 +175,7 @@ function introAnimationInHalf2() {
     articleIndex--;
     articleIndex--;
     articleIndex--;
-    setTimeout(introAnimationInHalf2, 3);
+    setTimeout(introAnimationInHalf2, 1);
   } else {
     articleIndex = 98;
     introAnimationInHalf3();
@@ -191,7 +191,7 @@ function introAnimationInHalf3() {
     articleIndex--;
     articleIndex--;
     articleIndex--;
-    setTimeout(introAnimationInHalf3, 3);
+    setTimeout(introAnimationInHalf3, 1);
   } else {
     return;
   }

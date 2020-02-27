@@ -1010,7 +1010,7 @@ b .center {
 }
 
 .article_out_ani {
-  animation: article_out_ani-kf .5s steps(5) both;
+  animation: article_out_ani-kf .4s steps(4) both;
 }
 
 @keyframes article_out_ani-kf {
@@ -1022,7 +1022,7 @@ b .center {
 
   99% {
     width: 0%;
-    transform: rotate(450deg) scale(7, 2);
+    transform: rotate(360deg) scale(7, 2);
   }
 
   100% {
