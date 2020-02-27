@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <title>SS - alle</title>
   <link rel="stylesheet" href="https://use.typekit.net/wyt4gfe.css">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -55,14 +55,13 @@
       <button data-kategori="kjoler" class="kjoler p-action-click">Kjoler</button>
       <button data-kategori="toppe" class="toppe p-action-click">Toppe</button>
     </section>
-    <section id="retter_section">
+    <section id="toej_section">
       <main id="data_fill"></main>
       <template id="template">
-        <article class="ret p-action-click">
+        <article class="article_toej p-action-click">
 
           <div class="img_overlay"></div>
-          <div id="ret_billede">
-          </div>
+          <div id="ret_billede"></div>
           <div id="ret_tekst">
             <h2 id="navn"></h2>
             <p id="kort"></p>
@@ -81,23 +80,15 @@
     </footer>
   </div>
   <main id="intro_holder"></main>
-  <!--<div id="loading_wrap">
-  <div id="loading_inner">
-    <div id="logo_container"></div>
-    <div id="loader">
-      <div class="square square1 square1_ani"></div>
-      <div class="square square2 square2_ani"></div>
-      <div class="square square3 square3_ani"></div>
-    </div>
-  </div>
-</div>-->
+
   <script src="intro_outro.js"></script>
+  <script src="links/nav-links.js"></script>
   <script src="pointer.js"></script>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const kategori = urlParams.get("kategori");
     let endpoint = "https://spreadsheets.google.com/feeds/list/1AdgP4T0S2sqYOZNl3aHq_vHGg7hOj5ulN23DWNIHV48/2/public/values?alt=json";
-    let retter = [];
+    let toej = [];
     let filter = kategori;
 
     document.addEventListener("DOMContentLoaded", start);
@@ -105,73 +96,84 @@
     function start() {
       console.log("start");
 
+      //tilføj eventlistener til burgermenu
+      document.querySelector("#burger").addEventListener("click", menuDown);
 
+      //start cursor script
+      init_pointer({});
 
+      //kald sorterKategori ved klik på kategori-knap
       document.querySelectorAll("#sorter_section button").forEach(knap => {
-        knap.addEventListener("click", sorterRetter)
+        knap.addEventListener("click", sorterKategori);
       });
 
+      //ændr titlen i head, til den kategori man er på
       document.querySelector("head title").textContent = `SS - ${filter}`;
       document.querySelector("#sorter_section h1").textContent = `${filter}`;
 
-      let retter = []
+      //opret tomt array til tøjet, derefter hent JSON
+      let toej = []
       hentJSON();
 
+      //gør så cursor virker med hover over valgte kategori
       document.querySelector(".valgt").classList.add("p-action-click");
       document.querySelector(".valgt").classList.remove("valgt");
       document.querySelector(`.${kategori}`).classList.add("valgt");
       document.querySelector(`.${kategori}`).classList.remove("p-action-click");
     }
 
+    //hent JSON, når den er loadet - derefter kald visToej
     async function hentJSON() {
       console.log("hent json");
 
       const response = await fetch(endpoint);
-      retter = await response.json();
-      visRetter();
+      toej = await response.json();
+      visToej();
     }
 
-    function visRetter() {
-      console.log("visRetter");
+    //viser toej-elementerne
+    function visToej() {
+      console.log("visToej");
       let dataFill = document.querySelector("#data_fill");
       let template = document.querySelector("#template");
 
+      //fjern content i dataFill-containeren
       dataFill.textContent = "";
 
-      retter.feed.entry.forEach(element => {
-        console.log(filter);
+      //for hvert toej-element
+      toej.feed.entry.forEach(element => {
+        //vis tøj element, hvis tøjets kategori og den valgte kategori er ens ELLER kategorien er 'alle'
         if (element.gsx$kategori.$t == filter || filter == "alle") {
-          let klon = template.cloneNode(true).content;
-          klon.querySelector(".ret #ret_billede").style.backgroundImage = `url("img/small/${element.gsx$billede.$t}-sm.jpg")`;
-          klon.querySelector(".ret #navn").innerHTML = `${element.gsx$navn.$t}`;
-          klon.querySelector(".ret #kort").textContent = `${element.gsx$kort.$t}`;
-          klon.querySelector(".ret #pris").textContent = `${element.gsx$pris.$t},-`;
-          klon.querySelector(".ret #hent_id").textContent = `${element.gsx$id.$t}`;
-          klon.querySelector(".ret #hent_id").style.display = "none";
-          klon.querySelector(".ret").addEventListener("click", () => {
+          let klon = template.cloneNode(true).content; //opret klon
+          klon.querySelector(".article_toej #ret_billede").style.backgroundImage = `url("img/small/${element.gsx$billede.$t}-sm.jpg")`; //føj billede til div som bg img
+          klon.querySelector(".article_toej #navn").innerHTML = `${element.gsx$navn.$t}`; //føj navn
+          klon.querySelector(".article_toej #kort").textContent = `${element.gsx$kort.$t}`; //føj kort beskr
+          klon.querySelector(".article_toej #pris").textContent = `${element.gsx$pris.$t},-`; //føj pris
+          klon.querySelector(".article_toej").addEventListener("click", () => { //føj eventlistener
+            startAniIn(); //kalder transition animation ind
             let elementHref = `detail.html?id=${element.gsx$id.$t}`;
-            startAniIn();
-            setTimeout(function() {
+            setTimeout(function() { //vent 600ms, gå til detail med toej-elementets id som variabel i URLen
               location.href = elementHref
             }, 600);
           });
-          dataFill.appendChild(klon);
+          dataFill.appendChild(klon); //indsæt klonen i databeholderen med appendChild
         }
       });
     }
 
-    function sorterRetter() {
-      console.log("sorterRetter");
-      filter = this.dataset.kategori;
-      console.log(filter + " filter");
-      document.querySelector(".valgt").classList.add("p-action-click");
-      document.querySelector(".valgt").classList.remove("valgt");
-      this.classList.add("valgt");
-      this.classList.remove("p-action-click");
-      visRetter();
+    //ved click på kategori-knap kald denne
+    function sorterKategori() {
 
-      document.querySelector("head title").textContent = `SS - ${filter}`;
-      document.querySelector("#sorter_section h1").textContent = `${filter}`;
+      filter = this.dataset.kategori;
+      document.querySelector(".valgt").classList.add("p-action-click"); //tilføj cursorhover til kategori, der før var valgt
+      document.querySelector(".valgt").classList.remove("valgt"); //fjern valgt fra kategori, der før var valgt
+      this.classList.add("valgt"); //tilføj valgt til den kategori, der er klikket på
+      this.classList.remove("p-action-click"); //fjern cursorhover fra kategori, der er klikket på
+      visToej(); //kald visToej
+
+
+      document.querySelector("head title").textContent = `SS - ${filter}`; //ændr head title til valgt kategori
+      document.querySelector("#sorter_section h1").textContent = `${filter}`; //ændr overskrift til valgt kategori
     }
 
 
@@ -182,109 +184,7 @@
 
 
 
-    startAniOut();
-
-    document.querySelector("#link-forside0").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "index.html"
-      }, 600);
-    });
-    document.querySelector("#link-forside1").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "index.html"
-      }, 600);
-    });
-    document.querySelector("#link-produkter1").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "produkter.html?kategori=alle"
-      }, 600);
-    });
-    document.querySelector("#link-alle1").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "produkter.html?kategori=alle"
-      }, 600);
-    });
-    document.querySelector("#link-jakker1").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "produkter.html?kategori=jakker"
-      }, 600);
-    });
-    document.querySelector("#link-kjoler1").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "produkter.html?kategori=kjoler"
-      }, 600);
-    });
-    document.querySelector("#link-toppe1").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "produkter.html?kategori=toppe"
-      }, 600);
-    });
-    document.querySelector("#link-om_os1").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "om_os.html"
-      }, 600);
-    });
-    document.querySelector("#link-forside2").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "index.html"
-      }, 600);
-    });
-    document.querySelector("#link-produkter2").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "produkter.html?kategori=alle"
-      }, 600);
-    });
-    document.querySelector("#link-alle2").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "produkter.html?kategori=alle"
-      }, 600);
-    });
-    document.querySelector("#link-jakker2").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "produkter.html?kategori=jakker"
-      }, 600);
-    });
-    document.querySelector("#link-kjoler2").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "produkter.html?kategori=kjoler"
-      }, 600);
-    });
-    document.querySelector("#link-toppe2").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "produkter.html?kategori=toppe"
-      }, 600);
-    });
-    document.querySelector("#link-om_os2").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "om_os.html"
-      }, 600);
-    });
-
-
-
-
-
-
-
-
-
-    document.querySelector("#burger").addEventListener("click", menuDown);
-
+    //animationer, der afspilles ved klik på burger (ned)
     function menuDown() {
       document.querySelector("#burger").classList.remove("burger_up");
       document.querySelector("#burger").classList.add("burger_down");
@@ -292,13 +192,12 @@
       document.querySelector("#nav_bg").classList.add("burger_down");
       document.querySelector("#nav3").classList.remove("burger_up");
       document.querySelector("#nav3").classList.add("burger_down");
-
-
       document.querySelector("#burger").removeEventListener("click", menuDown);
       document.querySelector("#burger").addEventListener("click", menuUp);
       document.querySelector("#nav_bg").addEventListener("click", menuUp);
     }
 
+    //animationer, der afspilles ved klik på burger (op)
     function menuUp() {
       document.querySelector("#burger").classList.remove("burger_down");
       document.querySelector("#burger").classList.add("burger_up");
@@ -306,14 +205,9 @@
       document.querySelector("#nav_bg").classList.add("burger_up");
       document.querySelector("#nav3").classList.remove("burger_down");
       document.querySelector("#nav3").classList.add("burger_up");
-
-
       document.querySelector("#nav_bg").removeEventListener("click", menuUp);
       document.querySelector("#burger").removeEventListener("click", menuUp);
       document.querySelector("#burger").addEventListener("click", menuDown);
     }
-    init_pointer({
-
-    })
   </script>
 </body></html>

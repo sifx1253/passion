@@ -114,11 +114,9 @@ button {
   transition: .2s;
   transition-timing-function: steps(2, jump-start);
   border: 1px solid #1717AF;
-  cursor: none;
 }
 
 button:hover {
-  cursor: none;
   transition: .2s;
   transition-timing-function: steps(2, jump-start);
   background-color: #1717AF;
@@ -140,9 +138,6 @@ button:hover {
 button:focus {
   outline: 0;
 }
-
-
-
 
 
 
@@ -313,76 +308,78 @@ nav {
   border: 1px solid #1717AF;
 }
 
-.ret {
+.article_toej {
   display: flex;
   flex-direction: column;
+  transition: .4s;
+  transition-timing-function: cubic-bezier(.3, 0, .2, 1);
 }
 
-.ret:hover .img_overlay {
+.article_toej:hover .img_overlay {
   background-size: 10px 10px;
 }
 
-.ret:nth-child(4n+0):hover .img_overlay {
+.article_toej:nth-child(4n+0):hover .img_overlay {
   transform: translate(0px, 610px);
 }
 
-.ret:nth-child(4n+1):hover .img_overlay {
+.article_toej:nth-child(4n+1):hover .img_overlay {
   transform: translate(-20px, 620px);
 }
 
-.ret:nth-child(4n+2):hover .img_overlay {
+.article_toej:nth-child(4n+2):hover .img_overlay {
   transform: translate(10px, 610px);
 }
 
-.ret:nth-child(4n+3):hover .img_overlay {
+.article_toej:nth-child(4n+3):hover .img_overlay {
   transform: translate(-10px, 620px);
 }
 
-.ret:nth-child(4n+0):hover #ret_billede {
+.article_toej:nth-child(4n+0):hover #ret_billede {
   transform: translate(-20px, 10px);
 }
 
-.ret:nth-child(4n+1):hover #ret_billede {
+.article_toej:nth-child(4n+1):hover #ret_billede {
   transform: translate(10px, 20px);
 }
 
-.ret:nth-child(4n+2):hover #ret_billede {
+.article_toej:nth-child(4n+2):hover #ret_billede {
   transform: translate(-10px, 10px);
 }
 
-.ret:nth-child(4n+3):hover #ret_billede {
+.article_toej:nth-child(4n+3):hover #ret_billede {
   transform: translate(20px, 20px);
 }
 
-.ret:nth-child(4n+0):hover #ret_tekst {
+.article_toej:nth-child(4n+0):hover #ret_tekst {
   transform: translate(10px, -20px);
 }
 
-.ret:nth-child(4n+1):hover #ret_tekst {
+.article_toej:nth-child(4n+1):hover #ret_tekst {
   transform: translate(-10px, -10px);
 }
 
-.ret:nth-child(4n+2):hover #ret_tekst {
+.article_toej:nth-child(4n+2):hover #ret_tekst {
   transform: translate(10px, -20px);
 }
 
-.ret:nth-child(4n+3):hover #ret_tekst {
+.article_toej:nth-child(4n+3):hover #ret_tekst {
   transform: translate(-20px, -10px);
 }
 
-.ret:nth-child(4n+0):hover #pris {
+.article_toej:nth-child(4n+0):hover #pris {
   transform: translate(10px, -35px);
 }
 
-.ret:nth-child(4n+1):hover #pris {
+.article_toej:nth-child(4n+1):hover #pris {
   transform: translate(20px, -35px);
 }
 
-.ret:nth-child(4n+2):hover #pris {
+.article_toej:nth-child(4n+2):hover #pris {
   transform: translate(-10px, -35px);
 }
 
-.ret:nth-child(4n+3):hover #pris {
+.article_toej:nth-child(4n+3):hover #pris {
   transform: translate(20px, -45px);
 }
 
@@ -453,7 +450,7 @@ nav {
   border: 1px solid #1717AF;
 }
 
-#retter_section .data_fill_class {
+#toej_section .data_fill_class {
   max-width: 1200px;
   margin: 10px auto;
   display: grid;
@@ -482,11 +479,6 @@ nav {
   background-color: #000;
   margin: 50px 0;
   opacity: .5;
-}
-
-.ret {
-  transition: .4s;
-  transition-timing-function: cubic-bezier(.3, 0, .2, 1);
 }
 
 
@@ -944,43 +936,56 @@ b .center {
 
 
 /*-------CURSOR---------*/
-
-#pointer-dot {
-  left: 0;
-  top: 0;
-  width: 0;
-  height: 0;
-  border: 2px solid #1717AF;
-  position: fixed;
-  z-index: 101;
-  pointer-events: none;
-  transition: border-radius 0.5s;
-  transition-timing-function: steps(5, jump-start);
-}
-
+#pointer-dot,
 #pointer-ring {
-  left: 0;
-  top: 0;
-  width: 0;
-  height: 0;
-  border: 2px solid #1717AF;
-  position: fixed;
-  z-index: 100;
-  pointer-events: none;
-  transition: border-radius 0.5s;
-  transition-timing-function: steps(5, jump-start);
+  visibility: hidden;
 }
 
-html {
-  cursor: none !important;
+@media screen and (min-width: 1000px) {
+  #pointer-dot {
+    visibility: visible;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    border: 2px solid #1717AF;
+    position: fixed;
+    z-index: 81;
+    pointer-events: none;
+    transition: border-radius 0.5s;
+    transition-timing-function: steps(5, jump-start);
+  }
+
+  #pointer-ring {
+    visibility: visible;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    border: 2px solid #1717AF;
+    position: fixed;
+    z-index: 80;
+    pointer-events: none;
+    transition: border-radius 0.5s;
+    transition-timing-function: steps(5, jump-start);
+  }
+
+  html {
+    cursor: none;
+  }
+
+  a {
+    cursor: none;
+  }
+
+  button {
+    cursor: none;
+  }
+
+  button:hover {
+    cursor: none;
+  }
 }
-
-a {
-  cursor: none !important;
-}
-
-
-
 
 
 /*--------INTRO OUTRO---------*/
@@ -992,7 +997,7 @@ a {
   display: grid;
   grid-template-columns: repeat(10, minmax(200px, 1fr));
   grid-gap: 0px;
-  z-index: 49;
+  z-index: 99;
   position: fixed;
   transform-origin: bottom right;
   visibility: hidden;
@@ -1095,43 +1100,43 @@ a {
     grid-gap: 0px 60px;
   }
 
-  .ret:nth-child(odd):hover #ret_billede {
+  .article_toej:nth-child(odd):hover #ret_billede {
     transform: scale(1) rotate(0) translateY(0);
   }
 
-  .ret:nth-child(even):hover #ret_billede {
+  .article_toej:nth-child(even):hover #ret_billede {
     transform: scale(1) rotate(0) translateY(0);
   }
 
-  .ret:nth-child(odd):hover #ret_tekst {
+  .article_toej:nth-child(odd):hover #ret_tekst {
     transform: scale(1) rotate(0) translateY(0);
   }
 
-  .ret:nth-child(even):hover #ret_tekst {
+  .article_toej:nth-child(even):hover #ret_tekst {
     transform: scale(1) rotate(0) translateY(0);
   }
 
-  .ret:nth-child(odd):hover #pris {
+  .article_toej:nth-child(odd):hover #pris {
     transform: rotate(0) translateY(-20px);
   }
 
-  .ret:nth-child(even):hover #pris {
+  .article_toej:nth-child(even):hover #pris {
     transform: rotate(0) translateY(-20px);
   }
 
-  .ret:nth-child(4n+0):hover .img_overlay {
+  .article_toej:nth-child(4n+0):hover .img_overlay {
     transform: translate(0, 620px);
   }
 
-  .ret:nth-child(4n+1):hover .img_overlay {
+  .article_toej:nth-child(4n+1):hover .img_overlay {
     transform: translate(0, 620px);
   }
 
-  .ret:nth-child(4n+2):hover .img_overlay {
+  .article_toej:nth-child(4n+2):hover .img_overlay {
     transform: translate(0, 620px);
   }
 
-  .ret:nth-child(4n+3):hover .img_overlay {
+  .article_toej:nth-child(4n+3):hover .img_overlay {
     transform: translate(0, 620px);
   }
 

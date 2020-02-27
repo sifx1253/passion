@@ -80,23 +80,15 @@
     </footer>
   </div>
   <main id="intro_holder"></main>
-  <!--<div id="loading_wrap">
-  <div id="loading_inner">
-    <div id="logo_container"></div>
-    <div id="loader">
-      <div class="square square1 square1_ani"></div>
-      <div class="square square2 square2_ani"></div>
-      <div class="square square3 square3_ani"></div>
-    </div>
-  </div>
-</div>-->
+
   <script src="intro_outro.js"></script>
+  <script src="links/nav-links.js"></script>
   <script src="pointer.js"></script>
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
     let endpoint = "https://spreadsheets.google.com/feeds/list/1AdgP4T0S2sqYOZNl3aHq_vHGg7hOj5ulN23DWNIHV48/2/public/values?alt=json";
-    let retter = [];
+    let toej = [];
     let popUp = document.querySelector("#popup");
 
     document.addEventListener("DOMContentLoaded", start);
@@ -104,35 +96,46 @@
     function start() {
       console.log("start");
 
+      //tilføj eventlistener til burgermenu
+      document.querySelector("#burger").addEventListener("click", menuDown);
 
-      let retter = []
+      //start cursor script
+      init_pointer({});
+
+      //opret tomt array til tøjet, derefter hent JSON
+      let toej = []
       hentJSON();
     }
 
+    //hent JSON, når den er loadet - derefter kald visToej
     async function hentJSON() {
       console.log("hent json");
 
       const response = await fetch(endpoint);
-      retter = await response.json();
-      visRetter();
+      toej = await response.json();
+      visToej();
     }
 
-    function visRetter() {
-      console.log("visRetter");
+    //viser toej-elementet
+    function visToej() {
+      console.log("visToej");
       let dataFill = document.querySelector("#data_fill");
       let template = document.querySelector("#template");
 
-      retter.feed.entry.forEach(element => {
+      //for hvert toej-element
+      toej.feed.entry.forEach(element => {
+        //vis tøj element, hvis tøjets id og id fra URL er ens
         if (element.gsx$id.$t == id) {
-          popUp.querySelector(".ret_popup #popup_billede").style.backgroundImage = `url(img/${element.gsx$billede.$t}.jpg)`;
-          popUp.querySelector(".ret_popup #popup_navn").textContent = `${element.gsx$navn.$t}`;
-          popUp.querySelector(".ret_popup #popup_lang").textContent = `${element.gsx$lang.$t}`;
-          popUp.querySelector(".ret_popup #popup_pris").textContent = `Pris: ${element.gsx$pris.$t},-`;
+          popUp.querySelector(".ret_popup #popup_billede").style.backgroundImage = `url(img/${element.gsx$billede.$t}.jpg)`;  //føj billede til div som bg img
+          popUp.querySelector(".ret_popup #popup_navn").textContent = `${element.gsx$navn.$t}`; //føj navn
+          popUp.querySelector(".ret_popup #popup_lang").textContent = `${element.gsx$lang.$t}`; //føj lang beskr
+          popUp.querySelector(".ret_popup #popup_pris").textContent = `Pris: ${element.gsx$pris.$t},-`; //føj pris
         }
-        document.querySelector("head title").textContent = `SS - ${element.gsx$navn.$t}`;
+        document.querySelector("head title").textContent = `SS - ${element.gsx$navn.$t}`; //ændr head title til produkt
       });
     }
 
+    //tilføj eventlistener med link, der afspiller transition ved click på tilbage
     document.querySelector("#popup_button_tilbage").addEventListener("click", () => {
       let tilbageHref = `produkter.html?kategori=alle`;
       startAniIn();
@@ -145,113 +148,7 @@
 
 
 
-
-
-
-
-    startAniOut();
-
-    document.querySelector("#link-forside0").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "index.html"
-      }, 600);
-    });
-    document.querySelector("#link-forside1").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "index.html"
-      }, 600);
-    });
-    document.querySelector("#link-produkter1").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "produkter.html?kategori=alle"
-      }, 600);
-    });
-    document.querySelector("#link-alle1").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "produkter.html?kategori=alle"
-      }, 600);
-    });
-    document.querySelector("#link-jakker1").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "produkter.html?kategori=jakker"
-      }, 600);
-    });
-    document.querySelector("#link-kjoler1").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "produkter.html?kategori=kjoler"
-      }, 600);
-    });
-    document.querySelector("#link-toppe1").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "produkter.html?kategori=toppe"
-      }, 600);
-    });
-    document.querySelector("#link-om_os1").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "om_os.html"
-      }, 600);
-    });
-    document.querySelector("#link-forside2").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "index.html"
-      }, 600);
-    });
-    document.querySelector("#link-produkter2").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "produkter.html?kategori=alle"
-      }, 600);
-    });
-    document.querySelector("#link-alle2").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "produkter.html?kategori=alle"
-      }, 600);
-    });
-    document.querySelector("#link-jakker2").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "produkter.html?kategori=jakker"
-      }, 600);
-    });
-    document.querySelector("#link-kjoler2").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "produkter.html?kategori=kjoler"
-      }, 600);
-    });
-    document.querySelector("#link-toppe2").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "produkter.html?kategori=toppe"
-      }, 600);
-    });
-    document.querySelector("#link-om_os2").addEventListener("click", () => {
-      startAniIn();
-      setTimeout(function() {
-        location.href = "om_os.html"
-      }, 600);
-    });
-
-
-
-
-
-
-
-
-
-    document.querySelector("#burger").addEventListener("click", menuDown);
-
+    //animationer, der afspilles ved klik på burger (ned)
     function menuDown() {
       document.querySelector("#burger").classList.remove("burger_up");
       document.querySelector("#burger").classList.add("burger_down");
@@ -259,13 +156,12 @@
       document.querySelector("#nav_bg").classList.add("burger_down");
       document.querySelector("#nav3").classList.remove("burger_up");
       document.querySelector("#nav3").classList.add("burger_down");
-
-
       document.querySelector("#burger").removeEventListener("click", menuDown);
       document.querySelector("#burger").addEventListener("click", menuUp);
       document.querySelector("#nav_bg").addEventListener("click", menuUp);
     }
 
+    //animationer, der afspilles ved klik på burger (op)
     function menuUp() {
       document.querySelector("#burger").classList.remove("burger_down");
       document.querySelector("#burger").classList.add("burger_up");
@@ -273,18 +169,9 @@
       document.querySelector("#nav_bg").classList.add("burger_up");
       document.querySelector("#nav3").classList.remove("burger_down");
       document.querySelector("#nav3").classList.add("burger_up");
-
-
       document.querySelector("#nav_bg").removeEventListener("click", menuUp);
       document.querySelector("#burger").removeEventListener("click", menuUp);
       document.querySelector("#burger").addEventListener("click", menuDown);
     }
-
-    init_pointer({
-
-    })
-
   </script>
-</body>
-
-</html>
+</body></html>
