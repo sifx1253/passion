@@ -1,7 +1,7 @@
 *,
 body {
   font-family: ibm-plex-mono, sans-serif;
-  font-weight: 300;
+  font-weight: 500;
   font-style: italic;
   line-height: 2rem;
   text-decoration: none;
@@ -14,7 +14,7 @@ body {
 }
 
 body {
-  background-color: #F7F2EB;
+  background-color: #f4f4f4;
 }
 
 body::-webkit-scrollbar {
@@ -28,7 +28,7 @@ body::-webkit-scrollbar {
   color: #1717AF;
   color: #c5a689;
   color: #F4C3CB;
-  color: #F7F2EB;
+  color: #f4f4f4;
   color: #FFF;
 }
 
@@ -68,7 +68,7 @@ h1 {
 }
 
 h1 span {
-  font-weight: 400;
+  font-weight: 500;
   text-transform: capitalize;
 }
 
@@ -84,19 +84,19 @@ h2 {
 }
 
 h2 span {
-  font-weight: 400;
+  font-weight: 500;
   text-transform: capitalize;
   color: #1717AF;
 }
 
 h3 {
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1rem;
 }
 
 p,
 button {
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1rem;
   margin: 5px 0;
 }
@@ -713,7 +713,8 @@ footer p {
 
 .splash_title h2 span {
   font-family: ibm-plex-mono, sans-serif;
-  font-weight: 300;
+  font-weight: 500;
+  font-size: 2rem;
   font-style: italic;
   text-transform: lowercase;
 }

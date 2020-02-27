@@ -123,6 +123,15 @@
       //start cursor script
       init_pointer({});
 
+      //tilføj eventlistener med link, der afspiller transition ved click på tilbage
+      document.querySelector("#popup_button_tilbage").addEventListener("click", () => {
+        let tilbageHref = `produkter.html?kategori=alle`;
+        startAniIn();
+        setTimeout(function() {
+          location.href = tilbageHref;
+        }, 600);
+      });
+
       //opret tomt array til tøjet, derefter hent JSON
       let toej = []
       hentJSON();
@@ -152,19 +161,13 @@
           popUp.querySelector(".ret_popup #popup_lang").textContent = `${element.gsx$lang.$t}`; //føj lang beskr
           popUp.querySelector(".ret_popup #popup_pris").textContent = `Pris: ${element.gsx$pris.$t},-`; //føj pris
           document.querySelector("head title").textContent = `SS - ${element.gsx$navn.$t}`;
+          document.querySelector("head title").textContent = `SS - ${element.gsx$navn.$t}`; //ændr head title til produktnavn
         }
-        document.querySelector("head title").textContent = `SS - ${element.gsx$navn.$t}`; //ændr head title til produkt
+
       });
     }
 
-    //tilføj eventlistener med link, der afspiller transition ved click på tilbage
-    document.querySelector("#popup_button_tilbage").addEventListener("click", () => {
-      let tilbageHref = `produkter.html?kategori=alle`;
-      startAniIn();
-      setTimeout(function() {
-        location.href = tilbageHref;
-      }, 600);
-    });
+
 
 
 
