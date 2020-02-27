@@ -669,7 +669,7 @@ footer p {
   width: 50vw;
   max-width: 600px;
   height: 55vh;
-  transform: translate(0, 35vh);
+  transform: translate(0, 30vh);
   position: absolute;
   align-self: flex-end;
 }
