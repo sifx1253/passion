@@ -177,6 +177,20 @@
   <script src="links/nav-links.js"></script>
   <script src="pointer.js"></script>
   <script>
+    /*
+    BESKRIVELSE AF SCRIPT
+    --------
+
+    Kald start funktion, når DOM content er loadet. I start funktionen:
+    ¤ tilføj eventlistener til scroll-pil, der kalder funktion, der sender brugeren forbi splash
+    ¤ tilføj eventlistener til kategorier, der kalder funktion, der sender brugeren til produkter.html og sorterer
+    ¤ tilføj eventlistener til burgermenu
+    ¤ start cursor script
+
+    Ved klik på burgermenu afspilles forskellige animationer.
+    */
+
+
     document.addEventListener("DOMContentLoaded", start);
 
     function start() {
@@ -185,6 +199,7 @@
       //føj eventlistener til scroll-pil, der kalder scrollDown
       document.querySelector(".arrow_small").addEventListener("click", scrollDown);
 
+      //tilføj eventlistener til kategorier
       document.querySelectorAll(".filter").forEach(each => {
         each.addEventListener("click", clickFilter);
       });

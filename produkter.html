@@ -85,6 +85,29 @@
   <script src="links/nav-links.js"></script>
   <script src="pointer.js"></script>
   <script>
+    /*
+    BESKRIVELSE AF SCRIPT
+    --------
+
+    Definer variable:
+    hent variabel kategori fra URL; hvis man har klikket på 'jakker' fra index.html kommer man ind på produkter.html, hvor der er sorteret for jakker.
+    definer også endpoint (JSON), toej (tomt array) og filter, der er den valgte kategori fra URLen.
+
+    Kald start funktion, når DOM content er loadet. I start funktionen:
+    ¤ tilføj eventlistener til burgermenu
+    ¤ start cursor script
+    ¤ gør så cursor virker med hover over valgte kategori
+    ¤ kald sorterKategori ved klik på kategori-knap
+    ¤ ændr titlen i head, til den kategori man er på
+    ¤ opret tomt array til tøjet, derefter hent JSON
+
+    Hent JSON, når den er hentet, vis derefter toej-elementerne. Ved visining af toej-elementerne klones template, hvorefter de forskellige data (navn, pris, mm.) sættes ind. Her tilføjes også en eventListener, der sender til detail.html ved klik på toej-elementet. I denne evenListener føjes toej-elementets id til URLet som en variabel. Denne id bruges i detail.html til at vise det valgte toej-element. Til sidst bruges appendChild for at føje elementet til data containeren.
+    Ved tryk på en kategori-sorteringsknap kaldes sorterKategori, der styler knapperne, og ændrer filter (som er den valgte kategori-variabel) - derefter kaldes visToej igen. Nu vil kun de toej-elementer, der har den valgte kategori vises.
+
+    Ved klik på burgermenu afspilles forskellige animationer.
+    */
+
+
     const urlParams = new URLSearchParams(window.location.search);
     const kategori = urlParams.get("kategori");
     let endpoint = "https://spreadsheets.google.com/feeds/list/1AdgP4T0S2sqYOZNl3aHq_vHGg7hOj5ulN23DWNIHV48/2/public/values?alt=json";
@@ -102,6 +125,12 @@
       //start cursor script
       init_pointer({});
 
+      //gør så cursor virker med hover over valgte kategori
+      document.querySelector(".valgt").classList.add("p-action-click");
+      document.querySelector(".valgt").classList.remove("valgt");
+      document.querySelector(`.${kategori}`).classList.add("valgt");
+      document.querySelector(`.${kategori}`).classList.remove("p-action-click");
+
       //kald sorterKategori ved klik på kategori-knap
       document.querySelectorAll("#sorter_section button").forEach(knap => {
         knap.addEventListener("click", sorterKategori);
@@ -114,12 +143,6 @@
       //opret tomt array til tøjet, derefter hent JSON
       let toej = []
       hentJSON();
-
-      //gør så cursor virker med hover over valgte kategori
-      document.querySelector(".valgt").classList.add("p-action-click");
-      document.querySelector(".valgt").classList.remove("valgt");
-      document.querySelector(`.${kategori}`).classList.add("valgt");
-      document.querySelector(`.${kategori}`).classList.remove("p-action-click");
     }
 
     //hent JSON, når den er loadet - derefter kald visToej

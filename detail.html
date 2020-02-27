@@ -85,6 +85,27 @@
   <script src="links/nav-links.js"></script>
   <script src="pointer.js"></script>
   <script>
+    /*
+    BESKRIVELSE AF SCRIPT
+    --------
+
+    Definer variable:
+    hent variabel kategori fra URL; hvis man har klikket på 'kimono' fra produkter.html kommer man ind på detail.html, hvor 'kimono' vises.
+    definer også endpoint (JSON), toej (tomt array) og popup, der er databeholderen.
+
+    Kald start funktion, når DOM content er loadet. I start funktionen:
+    ¤ tilføj eventlistener til burgermenu
+    ¤ start cursor script
+    ¤ opret tomt array til tøjet, derefter hent JSON
+
+    Hent JSON, når den er hentet, vis derefter toej-elementerne. Ved visining af toej-elementerne klones template, hvorefter de forskellige data (navn, pris, mm.) sættes ind. Til sidst bruges appendChild for at føje elementet til data containeren.
+
+    Tilføj eventlistener med link, der afspiller transition ved click på tilbage
+
+    Ved klik på burgermenu afspilles forskellige animationer.
+    */
+
+
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get("id");
     let endpoint = "https://spreadsheets.google.com/feeds/list/1AdgP4T0S2sqYOZNl3aHq_vHGg7hOj5ulN23DWNIHV48/2/public/values?alt=json";
@@ -126,10 +147,11 @@
       toej.feed.entry.forEach(element => {
         //vis tøj element, hvis tøjets id og id fra URL er ens
         if (element.gsx$id.$t == id) {
-          popUp.querySelector(".ret_popup #popup_billede").style.backgroundImage = `url(img/${element.gsx$billede.$t}.jpg)`;  //føj billede til div som bg img
+          popUp.querySelector(".ret_popup #popup_billede").style.backgroundImage = `url(img/${element.gsx$billede.$t}.jpg)`; //føj billede til div som bg img
           popUp.querySelector(".ret_popup #popup_navn").textContent = `${element.gsx$navn.$t}`; //føj navn
           popUp.querySelector(".ret_popup #popup_lang").textContent = `${element.gsx$lang.$t}`; //føj lang beskr
           popUp.querySelector(".ret_popup #popup_pris").textContent = `Pris: ${element.gsx$pris.$t},-`; //føj pris
+          document.querySelector("head title").textContent = `SS - ${element.gsx$navn.$t}`;
         }
         document.querySelector("head title").textContent = `SS - ${element.gsx$navn.$t}`; //ændr head title til produkt
       });
